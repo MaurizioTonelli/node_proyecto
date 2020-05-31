@@ -29,7 +29,7 @@
         <div class="row align-items-center">
             <div class="col-6 offset-3">
                 <div class="form-group">
-                    <label for="input-mail">Usuario</label>
+                    <label for="input-username">Usuario</label>
                     <input type="text" class="form-control" id="input-username" placeholder="username_123">
                     <small class="form-text text-muted">Acceso permitido a administradores</small>
                 </div>
@@ -37,7 +37,8 @@
                     <label for="input-password">Contraseña</label>
                     <input type="password" class="form-control" id="input-password" placeholder="***********">
                 </div>
-                <button class="btn btn-primary">Entrar</button>
+                <button id="btn-login" class="btn btn-primary">Entrar</button>
+                <p id="error-msg" style="color: red; padding: 10px;"></p>
             </div>
         </div>
     </div>
