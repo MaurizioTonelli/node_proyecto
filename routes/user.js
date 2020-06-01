@@ -21,10 +21,5 @@ user.post("/login", async (req,res,next)=>{
     }
     return res.status(201).json({code:201, message: "campos incompletos"})
 });
-user.get("/", async (res,req,next)=>{
-    const query = "SELECT * FROM administrators";
-    const rows = await db.query(query);
-    return res.status(200).json({code:200, message: rows});
-});
 
 module.exports = user;
