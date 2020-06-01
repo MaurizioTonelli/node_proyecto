@@ -11,8 +11,8 @@ user.post("/login", async (req,res,next)=>{
     if(user_name && user_password){
         if(rows.length== 1){
             const token = jwt.sign({
-                user_id : rows[0].user_id,
-                user_name : rows[0].user_name
+                user_id : rows[0].name,
+                user_name : rows[0].password
             }, "debugkey");
             return res.status(200).json({code:200, message: token})
         }else{

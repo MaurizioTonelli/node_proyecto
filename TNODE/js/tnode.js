@@ -1,8 +1,26 @@
-const logout_btn = document.getElementById("logout-btn");
-logout_btn.addEventListener("click", logout);
-var selectedRow = null;
+window.onload = init;
 
-window.onload = loadEmployees;
+var selectedRow = null;
+var headers = {}
+var base_path =  'http://localhost:3000/employees/'
+
+function init() {
+    const logout_btn = document.getElementById("logout-btn");
+    logout_btn.addEventListener("click", logout);
+
+    if (localStorage.getItem("token")) {
+        headers = {
+            headers: {
+                'Authorization': "bearer " + localStorage.getItem("token")
+            }
+        }
+        loadEmployees();
+    }
+    else {
+        window.location.href = "login.html";
+    }
+}
+
 
 function logout(){
     localStorage.removeItem("token");
@@ -11,18 +29,16 @@ function logout(){
 
 function loadEmployees(){
     clearEmployees();
-    axios({
-        method: 'get',
-        url: 'http://localhost:3000/employee',
-        data:{}
-    }).then(function(res){
+
+    axios.get(base_path, headers)
+    .then(function(res){
         for(var i = 0; i < res.data.message.length; i+=1){
             const {employee_id, name,last_name, phone_no, address, email} = res.data.message[i];
             var data = {employee_id, name, last_name, phone_no, address, email};
             displayRecord(data);
         }
     }).catch(function(err){
-        console.log(err);
+        console.log(err)
     });
 }
 function clearEmployees(){
@@ -65,18 +81,16 @@ function displayRecord(data){
 }
 
 function insertRecord(data){
-    axios({
-        method: 'put',
-        url: 'http://localhost:3000/employee/',
-        data:{
+    axios.put(base_path,
+        {
             first_name : data["firstName"],
             last_name : data["lastName"],
             phone_no : data["phone"],
             address : data["address"],
             email : data["email"] 
-        }
-        
-    }).then(function(res){
+        },
+        headers)
+    .then(function(res){
         console.log("row inserted");
         loadEmployees();
     }).catch(function(err){
@@ -86,19 +100,17 @@ function insertRecord(data){
 
 function updateRecord(data){
     const key = selectedRow.getAttribute("data-key");
-    const path = 'http://localhost:3000/employee/' + key
-    axios({
-        method: 'patch',
-        url: path,
-        data:{
+    const path = base_path + key
+    axios.patch(path,
+        {
             first_name : data["firstName"],
             last_name : data["lastName"],
             phone_no : data["phone"],
             address : data["address"],
             email : data["email"] 
-        }
-        
-    }).then(function(res){
+        },
+        headers)
+    .then(function(res){
         console.log("row updated");
         loadEmployees();
     }).catch(function(err){
@@ -128,14 +140,10 @@ function onDelete(td){
     if(confirm("Are you sure you want to delete this employee?")){
         var row = td.parentElement.parentElement;
         const key = row.getAttribute("data-key");
-        const path ='http://localhost:3000/employee/' +  key;
-        axios({
-            method: 'delete',
-            url: path,
-            data:{
-            }
-            
-        }).then(function(res){
+        const path = base_path +  key;
+
+        axios.delete(path, headers)
+        .then(function(res){
             console.log("row deleted");
             loadEmployees();
             resetForm();

@@ -3,9 +3,12 @@ const jwt = require('jsonwebtoken');
 const employee = express.Router();
 const db = require('../config/database');
 
-employee.post("/login", async (req,res,next)=>{
-    
+employee.get('/', async(req,res,next)=>{
+    const query = "SELECT * FROM employees";
+    const rows = await db.query(query);
+    return res.status(200).json({code:200, message: rows});
 });
+
 employee.put("/", async (req,res,next)=>{
     const {first_name, last_name, phone_no, address, email} = req.body;
     const query = `INSERT INTO employees VALUES(DEFAULT, 
@@ -40,12 +43,6 @@ employee.delete("/:id([0-9]{1,3})", async(req,res,next)=>{
         return res.status(200).json({code: 200, message: "Empleado eliminado"});
     }
     return res.status(500).json({code: 404, message: "ocurrio un error"});
-});
-
-employee.get('/', async(req,res,next)=>{
-    const query = "SELECT * FROM employees";
-    const rows = await db.query(query);
-    return res.status(200).json({code:200, message: rows});
 });
 
 employee.get('/:name([A-Za-z]+)', async(req,res,next)=>{

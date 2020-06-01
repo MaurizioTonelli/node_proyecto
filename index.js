@@ -10,9 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use("/user", user);
-app.use("/employee", employee);
-
 app.use(auth);
+app.use("/employees", employee);
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log("server is running");
