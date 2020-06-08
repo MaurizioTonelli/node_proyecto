@@ -10,6 +10,13 @@
 <body>
     <h1>Empleados</h1>
     <button id="logout-btn">Logout</button>
+    <div id="search-employee">
+        <form onsubmit="event.preventDefault(); onFormSearch();" autocomplete="off">
+            <label>Search...</label>
+            <input type="text" name="search" id="search">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     <div id="add-employee">
         <form onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
             <label>First Name</label>

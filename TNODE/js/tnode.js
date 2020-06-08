@@ -27,10 +27,10 @@ function logout(){
     window.location.href="login.html";
 }
 
-function loadEmployees(){
+function loadEmployees(search = ""){
     clearEmployees();
-
-    axios.get(base_path, headers)
+    search = search.replace(/\s/g, '');
+    axios.get(base_path + search, headers)
     .then(function(res){
         for(var i = 0; i < res.data.message.length; i+=1){
             const {employee_id, name,last_name, phone_no, address, email} = res.data.message[i];
@@ -44,6 +44,11 @@ function loadEmployees(){
 function clearEmployees(){
     var table = document.getElementById("employee-list").getElementsByTagName("tbody")[0];
     table.innerHTML = '';
+}
+
+function onFormSearch(){
+    var search = document.getElementById("search").value;
+    loadEmployees(search);
 }
 
 function onFormSubmit(){

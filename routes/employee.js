@@ -45,10 +45,12 @@ employee.delete("/:id([0-9]{1,3})", async(req,res,next)=>{
     return res.status(500).json({code: 404, message: "ocurrio un error"});
 });
 
-employee.get('/:name([A-Za-z]+)', async(req,res,next)=>{
-    const query = "SELECT * FROM employees WHERE name ILIKE '%"+name+"%' OR last_name ILIKE '%"+name+"%'";
+employee.get('/:search([A-Za-z]+)', async(req,res,next)=>{
+    var search = req.params.search;
+    const query = "SELECT * FROM employees WHERE CONCAT(name, last_name) LIKE '%"+search+"%'";
     const rows = await db.query(query);
-    return res.status(200).json({code:200, message: rows});
+    return res.status(200).json({code: 200, message: rows});
+
 });
 
 module.exports = employee;
