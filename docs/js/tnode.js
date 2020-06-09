@@ -60,6 +60,11 @@ function onFormSearch() {
   loadEmployees(search);
 }
 
+function onFormShowAll(){
+  document.getElementById("search").value = "";
+  loadEmployees();
+}
+
 function onFormSubmit() {
   var formData = readFormData();
   if (selectedRow === null) {
