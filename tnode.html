@@ -68,8 +68,10 @@
         <form onsubmit=" event.preventDefault(); onFormSearch();" autocomplete="off" class="form-inline my-2 my-lg-0">
             <input class="form-control col-md-8 mr-md-5 " type="search" placeholder="Search" aria-label="Search"
                 name="search" id="search">
-            <button class="btn btn-outline-success my-2 my-sm-0 col-md-3" type=" submit">Search</button>
-        </form>
+            <button name="search" class="btn btn-outline-success my-2 my-sm-0 col-md-2" type=" submit">Search</button>
+            <button type="button" name="show-all" class="btn btn-outline-primary my-2 my-sm-0 col-md-1" onclick="onFormShowAll()">Show All</button>
+
+        </form>        
 
         <table id="employee-list" class="table table-hover mt-3">
             <thead class="thead-light">
