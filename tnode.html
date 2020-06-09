@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -66,12 +67,14 @@
         <h1>Search</h1>
 
         <form onsubmit=" event.preventDefault(); onFormSearch();" autocomplete="off" class="form-inline my-2 my-lg-0">
-            <input class="form-control col-md-8 mr-md-5 " type="search" placeholder="Search" aria-label="Search"
-                name="search" id="search">
-            <button name="search" class="btn btn-outline-success my-2 my-sm-0 col-md-2" type=" submit">Search</button>
-            <button type="button" name="show-all" class="btn btn-outline-primary my-2 my-sm-0 col-md-1" onclick="onFormShowAll()">Show All</button>
+            <input class="form-control col-12 col-md-8 mr-md-4 mb-3 mb-md-0 " type="search" placeholder="Search"
+                aria-label="Search" name="search" id="search">
+            <button name="search" class="btn btn-outline-success my-2 my-sm-0 col-md-2 mr-md-1 col-5 mr-4 ml-4"
+                type=" submit">Search</button>
+            <button type="button" name="show-all" class="btn btn-outline-primary my-2 my-sm-0 col-5 col-md-1"
+                onclick="onFormShowAll()">Show All</button>
 
-        </form>        
+        </form>
 
         <table id="employee-list" class="table table-hover mt-3">
             <thead class="thead-light">
