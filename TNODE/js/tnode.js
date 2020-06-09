@@ -75,13 +75,14 @@ function displayRecord(data){
     var table = document.getElementById("employee-list").getElementsByTagName("tbody")[0];
     var newRow = document.createElement('tr');
     newRow.setAttribute("data-key", `${data.employee_id}`);
-    newRow.innerHTML = `<th>${data.name}</th>
-                        <th>${data.last_name}</th>
-                        <th>${data.phone_no}</th>
-                        <th>${data.address}</th>
-                        <th>${data.email}</th>
-                        <th><a onClick="onEdit(this)">Edit</a></th>
-                        <th><a onClick="onDelete(this)">Delete</a></th>`;
+    newRow.innerHTML = `<td>${data.name}</td>
+                        <td>${data.last_name}</td>
+                        <td>${data.phone_no}</td>
+                        <td>${data.address}</td>
+                        <td>${data.email}</td>
+                        <td><a onClick="onEdit(this)" class="btn btn-warning">Edit</a>
+                        <a onClick="onDelete(this)" class="btn btn-danger">Delete</a> 
+                        </td>`;
     table.appendChild(newRow);
 }
 

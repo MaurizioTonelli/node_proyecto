@@ -3,48 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TNODE</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="js/tnode.js"></script>
+
+    <title>TNODE</title>
 </head>
 <body>
-    <h1>Empleados</h1>
-    <button id="logout-btn">Logout</button>
-    <div id="search-employee">
-        <form onsubmit="event.preventDefault(); onFormSearch();" autocomplete="off">
-            <label>Search...</label>
-            <input type="text" name="search" id="search">
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-    <div id="add-employee">
-        <form onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
-            <label>First Name</label>
-            <input type="text" name="first_name" id="first_name">
-            <label>Last Name</label>
-            <input type="text" name="last_name" id="last_name">
-            <label>Phone</label>
-            <input type="text" name="phone" id="phone">
-            <label>Address</label>
-            <input type="text" name="address" id="address">
-            <label>Email</label>
-            <input type="text" name="email" id="email">
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-    <table id="employee-list">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
 
-        </tbody>
-    </table>
+    <nav class="navbar navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="#">TNODE</a>
+        <button id="logout-btn" class="btn btn-outline-light float-right">Logout</button>
+      </nav>
+
+    <div class="container mt-5">
+        <h1>Empleados</h1>
+
+        <div id="add-employee">
+            <form onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off" class="mb-3">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" id="first_name" class="form-control">    
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control">    
+                    </div>    
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" name="address" id="address" class="form-control">    
+                </div>  
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Phone</label>
+                        <input type="text" name="phone" id="phone" class="form-control">    
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Email</label>
+                        <input type="text" name="email" id="email" class="form-control">    
+                    </div>    
+                </div>
+                <input type="submit" value="Registrar" class="btn btn-primary">
+            </form>
+        </div>
+
+        <form onsubmit="event.preventDefault(); onFormSearch();" autocomplete="off" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <table id="employee-list" class="table table-hover mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            </tbody>
+        </table>
+    </div>
+    
 </body>
 </html>
