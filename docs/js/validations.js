@@ -1,16 +1,34 @@
+var email = false;
+var phone = false;
+function checkFields(){
+  if(!email || !phone){
+    document.getElementById("employee-submit").setAttribute("disabled", "disabled");
+  }else{
+    document.getElementById("employee-submit").removeAttribute("disabled");
+  }
+}
+
 // TNode Validations
-bootstrapValidate("#email", "email:Enter a valid E-Mail!");
-bootstrapValidate("#email", "required:This field is required");
-bootstrapValidate("#phone", "numeric:Please only enter numeric characters!");
-bootstrapValidate("#phone", "required:This field is required");
+bootstrapValidate("#email", "email:Enter a valid E-Mail!", function(isValid){
+  if(isValid){
+    email = true;
+    checkFields();
+  }else{
+    email = false;
+  }
+});
+bootstrapValidate("#phone", "numeric:Please only enter numeric characters!", function(isValid){
+  if(isValid){
+    phone = true;
+    checkFields();
+  }else{
+    phone = false;
+  }
+});
 bootstrapValidate(
   "#search",
   "alphanum:Please only enter alphanumeric characters!"
 );
-bootstrapValidate("#search", "required:This field is required!");
-bootstrapValidate("#first_name", "required:This field is required!");
-bootstrapValidate("#last_name", "required:This field is required!");
-bootstrapValidate("#address", "required:This field is required!");
 
 // Login Validations
 bootstrapValidate("#input-username", "required:This field is required!");
