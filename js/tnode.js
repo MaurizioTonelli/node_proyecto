@@ -2,7 +2,7 @@ window.onload = init;
 
 var selectedRow = null;
 var headers = {};
-var base_path = "http://localhost:3000/employees/";
+var base_path = "https://tnodehr.herokuapp.com/employees/";
 
 function init() {
   const logout_btn = document.getElementById("logout-btn");
