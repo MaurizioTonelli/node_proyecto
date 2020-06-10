@@ -32,3 +32,7 @@ function login() {
       console.log(err);
     });
 }
+
+// Login Validations
+bootstrapValidate("#input-username", "required:This field is required!");
+bootstrapValidate("#input-password", "required:This field is required!");
