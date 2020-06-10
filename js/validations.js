@@ -1,5 +1,7 @@
 var email = true;
 var phone = true;
+window.onload = checkFields;
+
 function checkFields(){
   if(!email || !phone){
     document.getElementById("employee-submit").setAttribute("disabled", "disabled");
