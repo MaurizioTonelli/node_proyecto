@@ -12,18 +12,18 @@ function checkFields(){
 bootstrapValidate("#email", "email:Enter a valid E-Mail!", function(isValid){
   if(isValid){
     email = true;
-    checkFields();
   }else{
     email = false;
   }
+  checkFields();
 });
 bootstrapValidate("#phone", "numeric:Please only enter numeric characters!", function(isValid){
   if(isValid){
     phone = true;
-    checkFields();
   }else{
     phone = false;
   }
+  checkFields();
 });
 bootstrapValidate(
   "#search",
