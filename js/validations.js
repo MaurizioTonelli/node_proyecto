@@ -6,7 +6,9 @@ function checkFields(){
   if(!email || !phone){
     document.getElementById("employee-submit").setAttribute("disabled", "disabled");
   }else{
-    document.getElementById("employee-submit").removeAttribute("disabled");
+    if(document.getElementById("employee-submit").hasAttribute("disabled")){
+      document.getElementById("employee-submit").removeAttribute("disabled");
+    }
   }
 }
 
